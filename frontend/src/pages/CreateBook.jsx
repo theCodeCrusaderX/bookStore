@@ -24,7 +24,7 @@ const CreateBooks = () => {
     };
     setLoading(true);
     axios
-      .post(`${api}/books`, data)
+      .post(`https://book-store-app-omega.vercel.app/books`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Created successfully', { variant: 'success' });
