@@ -31,8 +31,8 @@ app.use(express.json());
 app.use(cors({
   origin : "https://book-store-app-omega.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials : true
-  
+  credentials : true,
+  allowedHeaders: ['Content-Type'],
 }));
 
 
