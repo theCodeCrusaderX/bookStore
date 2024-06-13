@@ -4,7 +4,6 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { api } from '../backend-api/cofig';
 
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +14,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`${api}/books/${id}`)
+      .delete(`https://book-store-backend-eight-fawn.vercel.app/books/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Deleted successfully', { variant: 'success' });

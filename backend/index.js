@@ -6,34 +6,15 @@ import mongoose from "mongoose";
 
 const app = express();
 
+// Middleware for handling CORS POLICY
+app.use(cors({
+  origin : "*"
+}));
+
 // Middleware for parsing request body
 app.use(express.json());
 
-// Middleware for handling CORS POLICY
-// Option 1: Allow All Origins with Default of cors(*)
-// Option 2: Allow Custom Origins
 
-// app.use(
-//   cors({
-//     origin: `http://localhost:5173`,
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type'],
-//   })
-// );
-
-// const corsOptions = {
-//   origin: 'https://localhost:5173', // Replace with your frontend origin
-//   optionsSuccessStatus: 200
-// };
-
-// app.use(cors(corsOptions));
-
-app.use(cors({
-  origin : "https://book-store-app-omega.vercel.app",
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials : true,
-  allowedHeaders: ['Content-Type'],
-}));
 
 
 app.get("/", (req, res) => {

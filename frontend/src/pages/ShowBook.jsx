@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
-import { api } from '../backend-api/cofig';
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -13,7 +12,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${api}/books/${id}`)
+      .get(`https://book-store-backend-eight-fawn.vercel.app/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);

@@ -4,7 +4,7 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { api } from '../backend-api/cofig';
+
 
 const EditBook = () => {
   const [title, setTitle] = useState('');
@@ -19,7 +19,7 @@ const EditBook = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`${api}/books/${id}`)
+    axios.get(`https://book-store-backend-eight-fawn.vercel.app/books/${id}`)
     .then((response) => {
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear)
