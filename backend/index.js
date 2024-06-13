@@ -8,7 +8,9 @@ const app = express();
 
 // Middleware for handling CORS POLICY
 app.use(cors({
-  origin : "*"
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 // Middleware for parsing request body
