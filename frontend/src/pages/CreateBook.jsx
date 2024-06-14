@@ -11,8 +11,7 @@ const CreateBooks = () => {
   const [publishYear, setPublishYear] = useState('');
   const [discription, setDiscription] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const [image,setImage] = useState(null);
+  // const [image,setImage]= useState(null);
 
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -22,11 +21,12 @@ const CreateBooks = () => {
       title,
       author,
       publishYear,
-      discription
+      discription,
+      // image
     };
     setLoading(true);
     axios
-      .post(`https://book-store-backend-eight-fawn.vercel.app/books`, data)
+      .post(`/api/books`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Created successfully', { variant: 'success' });
@@ -38,10 +38,6 @@ const CreateBooks = () => {
         enqueueSnackbar('Error', { variant: 'error' });
         console.log(error);
       });
-  };
-
-  const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
   };
 
   return (
@@ -88,16 +84,18 @@ const CreateBooks = () => {
         </div>
 
 
-        <div className='my-4'>
+        {/* <div className='my-4'>
           <label className='text-xl mr-4 text-gray-500'>image</label>
           <input
             type='file'
             onChange={handleImageChange}
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
-        </div>        
+        </div>         
 
-
+        <form action="/image" method="post" enctype="multipart/form-data">
+          <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])}/>
+        </form>  */}
 
 
         <button className='p-2 bg-sky-300 m-8' onClick={handleSaveBook}>

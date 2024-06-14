@@ -13,7 +13,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`https://book-store-backend-eight-fawn.vercel.app/books/delAll`)
+      .delete(`/api/books/delAll`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('All Books Deleted successfully', { variant: 'success' });

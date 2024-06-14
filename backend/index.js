@@ -7,9 +7,7 @@ import mongoose from "mongoose";
 const app = express();
 
 // Middleware for handling CORS POLICY
-app.use(cors({
-  origin : "*"
-}));
+app.use(cors());
 
 // Middleware for parsing request body
 app.use(express.json());
@@ -17,11 +15,11 @@ app.use(express.json());
 
 
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("hello and welcome to my first mern stack project");
 });
 
-app.use('/books', booksRoute);
+app.use('/api/books', booksRoute);
 
 mongoose
   .connect(mongoDBURL)

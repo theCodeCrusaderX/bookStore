@@ -1,9 +1,24 @@
 import express from "express";
 import { Book } from "../model/bookModel.js";
+// import multer from "multer";
+
+// const upload = multer({ dest: 'uploads/' })
 
 const router = express.Router();
 
+// router.post('/image', upload.single('image'), async function (req, result) {
+//   // req.file is the `avatar` file
+//   // req.body will hold the text fields, if there were any
+//   console.log(req.body);
+//   console.log(req.file);
+// })
+
+
+
 // Route for Save a new Book
+
+
+
 router.post("/", async (request, response) => {
   try {
     if (
@@ -19,7 +34,7 @@ router.post("/", async (request, response) => {
       title: request.body.title,
       author: request.body.author,
       publishYear: request.body.publishYear,
-      discription: request.body.discription
+      discription: request.body.discription,
     };
 
     const book = await Book.create(newBook);
@@ -30,6 +45,7 @@ router.post("/", async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 });
+
 
 // Route for Get All Books from database
 router.get("/", async (request, response) => {

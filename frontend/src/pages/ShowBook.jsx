@@ -12,7 +12,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://book-store-backend-eight-fawn.vercel.app/books/${id}`)
+      .get(`/api/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);
