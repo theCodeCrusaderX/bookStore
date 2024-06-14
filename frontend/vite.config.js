@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server : {
     proxy : {
-      "/api" : "http://book-store-seven-kappa.vercel.app"
+      "/api" : "https://book-store-seven-kappa.vercel.app/api/"
     }
   },
   plugins: [react()],
