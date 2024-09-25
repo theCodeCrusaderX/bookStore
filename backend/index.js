@@ -3,6 +3,7 @@ import { PORT, mongoDBURL } from "./config.js";
 import booksRoute from "./routes/bookRoute.js";
 import cors from "cors"
 import mongoose from "mongoose";
+// import 'dotenv/config'
 
 const app = express();
 
@@ -10,6 +11,7 @@ const app = express();
 const corsOptions = {
   origin: ["http://localhost:5173", "https://book-store-mu-flax.vercel.app/"],
   methods: ["POST", "GET", "PUT", "DELETE"],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
