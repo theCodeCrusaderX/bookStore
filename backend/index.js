@@ -8,7 +8,7 @@ const app = express();
 
 // Middleware for handling CORS POLICY
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://recipefinder-frontend.onrender.com"],
+  origin: ["http://localhost:5173", "https://book-store-mu-flax.vercel.app/"],
   methods: ["POST", "GET", "PUT", "DELETE"],
 };
 
