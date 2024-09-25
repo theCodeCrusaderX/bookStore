@@ -11,7 +11,6 @@ const CreateBooks = () => {
   const [publishYear, setPublishYear] = useState('');
   const [discription, setDiscription] = useState('');
   const [loading, setLoading] = useState(false);
-  // const [image,setImage]= useState(null);
 
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -22,11 +21,10 @@ const CreateBooks = () => {
       author,
       publishYear,
       discription,
-      // image
     };
     setLoading(true);
     axios
-      .post(`/api/books`, data)
+      .post(`http://localhost:5555/books`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Created successfully', { variant: 'success' });
@@ -34,7 +32,6 @@ const CreateBooks = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Chack console');
         enqueueSnackbar('Error', { variant: 'error' });
         console.log(error);
       });
@@ -82,21 +79,6 @@ const CreateBooks = () => {
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
         </div>
-
-
-        {/* <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>image</label>
-          <input
-            type='file'
-            onChange={handleImageChange}
-            className='border-2 border-gray-500 px-4 py-2  w-full '
-          />
-        </div>         
-
-        <form action="/image" method="post" enctype="multipart/form-data">
-          <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])}/>
-        </form>  */}
-
 
         <button className='p-2 bg-sky-300 m-8' onClick={handleSaveBook}>
           Save

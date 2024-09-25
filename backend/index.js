@@ -7,19 +7,17 @@ import mongoose from "mongoose";
 const app = express();
 
 // Middleware for handling CORS POLICY
-app.use(cors());
+// app.use(cors({origin : '*'}))
 
 // Middleware for parsing request body
 app.use(express.json());
 
-
-
-
-app.get("/api", (req, res) => {
-  res.send("hello and welcome to my first mern stack project");
+app.get("/hello", (req, res) => {
+  res.status(200).json({ message: "Hello!" });
 });
 
-app.use('/api/books', booksRoute);
+
+app.use('/books', booksRoute);
 
 mongoose
   .connect(mongoDBURL)
