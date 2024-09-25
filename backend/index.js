@@ -7,7 +7,15 @@ import mongoose from "mongoose";
 const app = express();
 
 // Middleware for handling CORS POLICY
-// app.use(cors({origin : '*'}))
+const corsOptions = {
+  origin: ["http://localhost:5173", "https://recipefinder-frontend.onrender.com"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 
 // Middleware for parsing request body
 app.use(express.json());
