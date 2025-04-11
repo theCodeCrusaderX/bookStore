@@ -9,7 +9,7 @@ const CreateBooks = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [publishYear, setPublishYear] = useState('');
-  const [discription, setDiscription] = useState('');
+  const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const CreateBooks = () => {
       title,
       author,
       publishYear,
-      discription,
+      description,
     };
     setLoading(true);
     axios
@@ -71,11 +71,11 @@ const CreateBooks = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Discription</label>
+          <label className='text-xl mr-4 text-gray-500'>description</label>
           <textarea
             type='text'
-            value={discription}
-            onChange={(e) => setDiscription(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
         </div>

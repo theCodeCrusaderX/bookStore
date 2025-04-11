@@ -1,26 +1,22 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../config.js';
 
-const bookSchema = mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    author: {
-      type: String,
-      required: true,
-    },
-    publishYear: {
-      type: Number,
-      required: true,
-    },
-    discription: {
-      type: String
-    }, 
+export const Book = sequelize.define('Book', {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-  {
-    timestamps: true,
-  }
-);
-
-export const Book = mongoose.model('Book', bookSchema);
+  author: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  publishYear: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.TEXT,
+  },
+}, {
+  timestamps: true,
+});

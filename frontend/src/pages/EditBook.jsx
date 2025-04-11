@@ -10,7 +10,7 @@ const EditBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [publishYear, setPublishYear] = useState('');
-  const [discription, setDiscription] = useState('');
+  const [description, setDescription] = useState('');
   
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const EditBook = () => {
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear)
         setTitle(response.data.title)
-        setDiscription(response.data.discription)
+        setDescription(response.data.discription)
         setLoading(false);
       }).catch((error) => {
         setLoading(false);
@@ -38,7 +38,7 @@ const EditBook = () => {
       title,
       author,
       publishYear,
-      discription
+      description
     };
     setLoading(true);
     axios
@@ -90,11 +90,11 @@ const EditBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Discription</label>
+          <label className='text-xl mr-4 text-gray-500'>Description</label>
           <textarea
             type='text'
-            value={discription}
-            onChange={(e) => setDiscription(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
         </div>
