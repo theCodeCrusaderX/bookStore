@@ -13,7 +13,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`https://bookstore-g6qx.onrender.com/books/delAll`)
+      .delete(`https://bookstore-g6qx.onrender.com/books/delAll`,{withCredentials: true})
       .then(() => {
         setLoading(false);
         enqueueSnackbar('All Books Deleted successfully', { variant: 'success' });
