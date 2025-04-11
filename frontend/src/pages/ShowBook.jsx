@@ -15,6 +15,8 @@ const ShowBook = () => {
       .get(`https://bookstore-backend-9abk.onrender.com/books/${id}`, { withCredentials: true })
       .then((response) => {
         setBook(response.data);
+        console.log("data :: ",response.data);
+        
         setLoading(false);
       })
       .catch((error) => {
@@ -53,11 +55,11 @@ const ShowBook = () => {
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Create Time :</span>
-            <span>{book.createdAt.split("T")[0]}</span>
+            <span>{book.createdAt?.split("T")[0]}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Last Update Time :</span>
-            <span>{book.updatedAt.split("T")[0]}</span>
+            <span>{book.updatedAt?.split("T")[0]}</span>
           </div>
         </div>
       )}
