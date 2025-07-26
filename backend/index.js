@@ -2,7 +2,6 @@ import express from "express";
 import { PORT } from "./config.js";
 import booksRoute from "./routes/bookRoute.js";
 import cors from "cors"
-// import mongoose from "mongoose";
 import { connectDB } from "./config.js";
 import 'dotenv/config'
 

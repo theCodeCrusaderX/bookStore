@@ -1,11 +1,11 @@
-import { sequelize } from './config.js';
-import { Book } from './model/bookModel.js';
+// import { sequelize } from './config.js';
+// import { Book } from './model/bookModel.js';
 
-sequelize.sync({ force: true }).then(() => {
-  console.log('Database & tables created!');
-}).catch((error) => {
-  console.error('Error syncing database:', error);
-});
+// sequelize.sync({ force: true }).then(() => {
+//   console.log('Database & tables created!');
+// }).catch((error) => {
+//   console.error('Error syncing database:', error);
+// });
 
 
 // Connects to the MySQL database using the sequelize instance.

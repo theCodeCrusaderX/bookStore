@@ -12,7 +12,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-backend-9abk.onrender.com/books/${id}`, { withCredentials: true })
+      .get(`https://bookstore-backend-9abk.onrender.combooks/${id}`, { withCredentials: true })
       .then((response) => {
         setBook(response.data);
         console.log("data :: ",response.data);

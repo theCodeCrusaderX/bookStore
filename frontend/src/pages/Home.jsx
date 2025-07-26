@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-backend-9abk.onrender.com/books`,{withCredentials: true})
+      .get(`https://bookstore-backend-9abk.onrender.combooks`,{withCredentials: true})
       .then((response) => {
         setBooks(response.data.data);
         console.log(response.data.data);
