@@ -1,5 +1,7 @@
 # LIVE LINK
-https://book-store-mu-flax.vercel.app/
+
+Visit [https://book-store-mu-flax.vercel.app/](https://book-store-mu-flax.vercel.app/) in your browser.
+
 
 # MERN Bookstore Project
 
