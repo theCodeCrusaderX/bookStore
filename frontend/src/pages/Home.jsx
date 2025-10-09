@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Spinner from '../components/Spinner';
+import { FourSquare} from 'react-loading-indicators';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-1580.onrender.com/books`,{withCredentials: true})
+      .get(`http://localhost:5555/books`,{withCredentials: true})
       .then((response) => {
         setBooks(response.data.data);
         console.log(response.data.data);
@@ -61,7 +61,7 @@ const Home = () => {
       </div>
       {loading ? (
         <div className='flex justify-center items-center'>
-          <Spinner />
+          <FourSquare color="#32cd32" size="medium" text="" textColor="" />
         </div>
       ) : showType === 'table' ? (
         <BooksTable books={books} />

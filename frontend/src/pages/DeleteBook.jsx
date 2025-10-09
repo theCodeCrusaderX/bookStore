@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BackButton from '../components/BackButton';
-import Spinner from '../components/Spinner';
+import { FourSquare} from 'react-loading-indicators';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -14,7 +14,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`https://bookstore-1580.onrender.com/books/${id}`,{withCredentials: true})
+      .delete(`http://localhost:5555/books/${id}`,{withCredentials: true})
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Deleted successfully', { variant: 'success' });
@@ -31,7 +31,7 @@ const DeleteBook = () => {
     <div className='p-4'>
       <BackButton />
       <h1 className='text-3xl my-4'>Delete Book</h1>
-      {loading ? <Spinner /> : ''}
+      {loading ? <FourSquare color="#32cd32" size="medium" text="" textColor="" /> : ''}
       <div className='flex flex-col items-center border-2 border-sky-400 rounded-xl w-[600px] p-8 mx-auto'>
         <h3 className='text-2xl'>Are You Sure You want to delete this book?</h3>
 

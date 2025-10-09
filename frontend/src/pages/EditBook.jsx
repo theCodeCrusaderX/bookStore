@@ -19,7 +19,7 @@ const EditBook = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://bookstore-1580.onrender.com/books/${id}`,{withCredentials: true})
+    axios.get(`http://localhost:5555/books/${id}`,{withCredentials: true})
     .then((response) => {
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear)
@@ -31,7 +31,7 @@ const EditBook = () => {
         alert('An error happened. Please Chack console');
         console.log(error);
       });
-  }, [])
+  }, [id])
   
   const handleEditBook = () => {
     const data = {
@@ -42,7 +42,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .put(`https://bookstore-1580.onrender.com/books/${id}`, data)
+      .put(`http://localhost:5555/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Edited successfully', { variant: 'success' });

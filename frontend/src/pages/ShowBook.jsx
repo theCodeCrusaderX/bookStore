@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
-import Spinner from '../components/Spinner';
+import { FourSquare } from 'react-loading-indicators';
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -12,11 +12,11 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-1580.onrender.com/books/${id}`, { withCredentials: true })
+      .get(`http://localhost:5555/books/${id}`, { withCredentials: true })
       .then((response) => {
         setBook(response.data);
-        console.log("data :: ",response.data);
-        
+        console.log("data :: ", response.data);
+
         setLoading(false);
       })
       .catch((error) => {
@@ -30,13 +30,17 @@ const ShowBook = () => {
       <BackButton />
       <h1 className='text-3xl my-4'>Show Book</h1>
       {loading ? (
-        <Spinner />
+        <FourSquare color="#32cd32" size="medium" text="" textColor="" />
       ) : (
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
+          <div>
+            <img src={book.imageUrl} alt={book.title} />
+          </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Id :</span>
             <span>{book.id}</span>
           </div>
+
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Title :</span>
             <span>{book.title}</span>

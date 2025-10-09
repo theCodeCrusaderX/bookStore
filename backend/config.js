@@ -1,22 +1,19 @@
 export const PORT = 5555;
-
-import { Sequelize } from 'sequelize';
-import 'dotenv/config';
-
-export const sequelize = new Sequelize(process.env.MYSQL_URL, {
-  dialect: 'mysql',
-  logging: false,
-});
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 
 export const connectDB = async () => {
   try {
-    await sequelize.authenticate();
-    await sequelize.sync({ alter: true }); // Auto-create missing tables
-    console.log('Connected to MySQL database.');
+    await prisma.$connect();
+    console.log('Connected to db successfully');
+    
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
 };
+
+export { prisma };
+
 
 
 
