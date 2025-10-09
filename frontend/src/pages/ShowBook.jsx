@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
-import { FourSquare } from 'react-loading-indicators';
+import { Commet} from 'react-loading-indicators';
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -30,11 +30,11 @@ const ShowBook = () => {
       <BackButton />
       <h1 className='text-3xl my-4'>Show Book</h1>
       {loading ? (
-        <FourSquare color="#32cd32" size="medium" text="" textColor="" />
+        <Commet color="#32cd32" size="medium" text="" textColor="" />
       ) : (
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
           <div>
-            <img src={book.imageUrl} alt={book.title} />
+            <img src={book.imageUrl} alt={book.title} className="max-w-[300px] md:max-w-[400px]" />
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Id :</span>

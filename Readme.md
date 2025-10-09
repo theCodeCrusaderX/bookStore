@@ -3,49 +3,51 @@
 Visit [https://book-store-mu-flax.vercel.app/](https://book-store-mu-flax.vercel.app/) in your browser.
 
 
-# MERN Bookstore Project
+# # BookStore MERN App
 
-A full-stack Bookstore application built with React (Vite), Express, Sequelize, and MySQL.
+A full-stack BookStore application built with React (Vite), Express, Prisma, PostgreSQL, and Cloudinary.
 
 ## Features
 
-- List, create, edit, and delete books
-- Delete all books at once
-- Responsive UI with table and card views
-- Animated background using WebGL particles
-- Notifications for actions (using notistack)
-- Backend API with RESTful endpoints
-- MySQL database integration via Sequelize ORM
+- Add, edit, delete, and list books
+- Upload book cover images (Cloudinary)
+- AI-powered book description generation (Google Gemini)
+- Drag-and-drop and click-to-upload for images
+- Responsive UI with Tailwind CSS
+- Notifications for user actions (notistack)
+- RESTful API backend
+
+## Tech Stack
+
+- **Frontend:** React, Vite, Tailwind CSS, notistack
+- **Backend:** Express.js, Prisma ORM, PostgreSQL
+- **Image Upload:** Multer, Cloudinary
+- **AI Integration:** Google Gemini API
 
 ## Project Structure
 
 ```
 bookStore/
 ├── backend/
-│   ├── .env
-│   ├── config.js
 │   ├── index.js
-│   ├── model/
-│   │   └── bookModel.js
+│   ├── config.js
 │   ├── routes/
 │   │   └── bookRoute.js
-│   └── syncDatabase.js
+│   ├── middlewares/
+│   │   └── multer.js
+│   ├── utils/
+│   │   └── cloudinary.js
+│   ├── prisma/
+│   │   └── schema.prisma
 ├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── CreateBook.jsx
+│   │   │   ├── EditBook.jsx
+│   │   └── components/
 │   ├── index.html
 │   ├── package.json
-│   ├── postcss.config.js
-│   ├── tailwind.config.js
-│   ├── vite.config.js
-│   ├── public/
-│   ├── src/
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   ├── index.css
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── assets/
-├── package.json
-└── .gitignore
+└── README.md
 ```
 
 ## Getting Started
@@ -53,7 +55,9 @@ bookStore/
 ### Prerequisites
 
 - Node.js 20.x
-- MySQL database
+- PostgreSQL database
+- Cloudinary account (for image uploads)
+- Google Gemini API key (for AI descriptions)
 
 ### Backend Setup
 
@@ -62,11 +66,20 @@ bookStore/
    cd backend
    npm install
    ```
-2. Configure your MySQL connection in `.env`:
+2. Configure your `.env` file:
    ```
-   MYSQL_URL = mysql://user:password@host:port/database
+   DATABASE_URL=postgresql://user:password@host:port/database
+   CLOUDINARY_CLOUD_NAME=your_cloud_name
+   CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_API_SECRET=your_api_secret
+   GEMINI_API_KEY=your_gemini_api_key
    ```
-3. Start the backend server:
+3. Run Prisma migrations and generate client:
+   ```sh
+   npx prisma migrate dev
+   npx prisma generate
+   ```
+4. Start the backend server:
    ```sh
    npm run dev
    ```
@@ -86,16 +99,14 @@ bookStore/
 
 ## API Endpoints
 
-- `GET /books` — List all books
 - `POST /books` — Create a new book
-- `GET /books/:id` — Get details of a book
+- `GET /books` — List all books
+- `GET /books/:id` — Get a book by ID
 - `PUT /books/:id` — Edit a book
 - `DELETE /books/:id` — Delete a book
 - `DELETE /books/delAll` — Delete all books
+- `POST /books/upload` — Upload book image
+- `POST /books/generate-description` — Generate book description with AI
 
-## Technologies Used
 
-- React, Vite, Tailwind CSS
-- Express.js, Sequelize, MySQL
-- notistack, react-icons
-
+<p align="center">💓 by Dinesh Kumar Shaw</p>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FourSquare} from 'react-loading-indicators';
+import { Commet } from 'react-loading-indicators';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -16,11 +16,11 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-1580.onrender.com/books`,{withCredentials: true})
+      .get(`https://bookstore-1580.onrender.com/books`, { withCredentials: true })
       .then((response) => {
         setBooks(response.data.data);
         console.log(response.data.data);
-        
+
         setLoading(false);
       })
       .catch((error) => {
@@ -45,23 +45,27 @@ const Home = () => {
           Card
         </button>
       </div>
-      
+
       <div className='flex justify-between items-center'>
-        <h1 className='text-3xl my-8'>Books List</h1>
+        <h1 className='md:text-3xl my-8 border-2 border-sky-400 p-2 md:p-4'>Books List</h1>
         <Link to='/books/create'>
           <MdOutlineAddBox className='text-sky-800 text-4xl' />
         </Link>
       </div>
 
-      <div className='flex items-center justify-end'>
-        <h1 className='text-3xl my-8'>Delete all books</h1>
-        <Link to="/books/delAll">
+      <div className='mb-4'>
+        <Link to="/books/delAll" className='flex justify-end'>
+          <h1 className='md:text-xl border-b-2 border-red-400 p-1'>Delete All Books</h1>
           <MdOutlineDelete size={40} className='text-2xl text-red-600' />
         </Link>
+
       </div>
       {loading ? (
         <div className='flex justify-center items-center'>
-          <FourSquare color="#32cd32" size="medium" text="" textColor="" />
+          <div style={{ transform: 'scale(1.5)' }}>
+            <Commet color="#32cd32" size="large" text="" textColor="" />
+          </div>
+
         </div>
       ) : showType === 'table' ? (
         <BooksTable books={books} />

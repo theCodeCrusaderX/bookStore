@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BackButton from '../components/BackButton';
-import { FourSquare } from 'react-loading-indicators';
+import { Commet} from 'react-loading-indicators';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -135,8 +135,8 @@ const CreateBooks = () => {
     <div className='p-4'>
       <BackButton />
       <h1 className='text-3xl my-4'>Create Book</h1>
-      {loading ? <FourSquare color="#32cd32" size="medium" text="" textColor="" /> : ''}
-      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
+      {loading ? <Commet color="#32cd32" size="medium" text="" textColor="" /> : ''}
+      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[350px] md:w-[600px] p-4 mx-auto '>
         <div className='my-4'>
           <label className='text-xl mr-4 text-gray-500'>Title</label>
           <input
