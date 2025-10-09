@@ -33,7 +33,7 @@ const CreateBooks = () => {
     }
     setLoading(true);
     axios
-      .post(`http://localhost:5555/books`, data, { withCredentials: true })
+      .post(`https://bookstore-1580.onrender.com/books`, data, { withCredentials: true })
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Created successfully', { variant: 'success' });
@@ -55,7 +55,7 @@ const CreateBooks = () => {
     setLoadingText(true);
     try {
       const res = await axios.post(
-        'http://localhost:5555/books/generate-description',
+        'https://bookstore-1580.onrender.com/books/generate-description',
         { bookName: title },
         { withCredentials: true }
       );
@@ -79,7 +79,7 @@ const CreateBooks = () => {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      const response = await axios.post('http://localhost:5555/books/upload', formData, {
+      const response = await axios.post('https://bookstore-1580.onrender.com/books/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });
