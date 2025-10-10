@@ -4,6 +4,8 @@ import { FourSquare} from 'react-loading-indicators';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import { API_URL } from '../constants/constants';
+
 
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +16,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`https://bookstore-1580.onrender.com/books/${id}`,{withCredentials: true})
+      .delete(`${API_URL}/books/${id}`,{withCredentials: true})
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Deleted successfully', { variant: 'success' });

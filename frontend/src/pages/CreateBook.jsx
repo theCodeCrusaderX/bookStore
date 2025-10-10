@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { ThreeDot } from 'react-loading-indicators';
-
+import { API_URL } from '../constants/constants';
 
 const CreateBooks = () => {
   const [title, setTitle] = useState('');
@@ -33,7 +33,7 @@ const CreateBooks = () => {
     }
     setLoading(true);
     axios
-      .post(`https://bookstore-1580.onrender.com/books`, data, { withCredentials: true })
+      .post(`${API_URL}/books`, data, { withCredentials: true })
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Created successfully', { variant: 'success' });
@@ -55,7 +55,7 @@ const CreateBooks = () => {
     setLoadingText(true);
     try {
       const res = await axios.post(
-        'https://bookstore-1580.onrender.com/books/generate-description',
+        '${API_URL}/books/generate-description',
         { bookName: title },
         { withCredentials: true }
       );
@@ -79,7 +79,7 @@ const CreateBooks = () => {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      const response = await axios.post('https://bookstore-1580.onrender.com/books/upload', formData, {
+      const response = await axios.post('${API_URL}/books/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });

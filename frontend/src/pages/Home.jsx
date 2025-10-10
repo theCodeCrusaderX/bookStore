@@ -7,6 +7,7 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
+import { API_URL } from '../constants/constants';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -16,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-1580.onrender.com/books`, { withCredentials: true })
+      .get(`${API_URL}/books`, { withCredentials: true })
       .then((response) => {
         setBooks(response.data.data);
         console.log(response.data.data);
@@ -53,7 +54,7 @@ const Home = () => {
         </Link>
       </div>
 
-      <div className='mb-4'>
+      <div className='mb-2'>
         <Link to="/books/delAll" className='flex justify-end'>
           <h1 className='md:text-xl border-b-2 border-red-400 p-1'>Delete All Books</h1>
           <MdOutlineDelete size={40} className='text-2xl text-red-600' />

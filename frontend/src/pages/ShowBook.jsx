@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import { Commet} from 'react-loading-indicators';
+import { API_URL } from '../constants/constants';
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -12,7 +13,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-1580.onrender.com/books/${id}`, { withCredentials: true })
+      .get(`${API_URL}/books/${id}`, { withCredentials: true })
       .then((response) => {
         setBook(response.data);
         console.log("data :: ", response.data);
