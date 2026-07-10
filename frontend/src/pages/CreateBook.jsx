@@ -55,7 +55,7 @@ const CreateBooks = () => {
     setLoadingText(true);
     try {
       const res = await axios.post(
-        '${API_URL}/books/generate-description',
+        `${API_URL}/books/generate-description`,
         { bookName: title },
         { withCredentials: true }
       );
@@ -78,8 +78,9 @@ const CreateBooks = () => {
     setLoadingImage(true);
     const formData = new FormData();
     formData.append('file', file);
+    
     try {
-      const response = await axios.post('${API_URL}/books/upload', formData, {
+      const response = await axios.post(`${API_URL}/books/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });
